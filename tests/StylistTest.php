@@ -80,6 +80,25 @@
             $this->assertEquals([$test_Stylist, $test_Stylist2], $result);
         }
 
+        //5. Enter 2 stylists in the database and test if we can delete them.
+        function test_deleteAll() {
+            //Arrange
+            $stylist_name = "Allison";
+            $stylist_name2 = "Fey";
+            $test_Stylist = new Stylist($stylist_name);
+            $test_Stylist->save();
+            $test_Stylist2 = new Stylist($stylist_name2);
+            $test_Stylist2->save();
+
+            //Act
+            Stylist::deleteAll();
+            $result = Stylist::getAll();
+
+            //Assert
+            $this->assertEquals([], $result);
+        }
+
+
 
     }
 ?>
