@@ -115,5 +115,19 @@
             $this->assertEquals($test_Stylist, $result);
         }
 
+        //7. Enter a stylist into the database and update their info.
+        function testUpdate() {
+            //Arrange
+            $stylist_name = "Joes Burgers";
+            $id = null;
+            $test_stylist = new Stylist($stylist_name, $id);
+            $test_stylist->save();
+            $new_stylist_name = "McDonalds";
+            //Act
+            $test_stylist->update($new_stylist_name);
+            //Assert
+            $this->assertEquals($new_stylist_name, $test_stylist->getStylistName());
+        }
+
     }
 ?>
