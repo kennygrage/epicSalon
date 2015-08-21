@@ -238,12 +238,9 @@
 
             //Act
             $test_client->deleteOne();
-            
+
             //Assert
             $this->assertEquals([], Client::getAll());
         }
-
-
-
     }
 ?>
