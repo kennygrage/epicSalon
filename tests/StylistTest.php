@@ -34,5 +34,23 @@
             //Assert
             $this->assertEquals($stylist_name, $result);
         }
+
+        //2. Get the auto generated ID from the stylist.
+        function test_getId() {
+            //Arrange
+            $stylist_name = "Allison";
+            $id = 1;
+            $test_Stylist = new Stylist($stylist_name, $id);
+
+            //Act
+            $result = $test_Stylist->getId();
+
+            //Assert
+            $this->assertEquals($id, $result);
+        }
+
+
+
+
     }
 ?>
