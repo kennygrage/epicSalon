@@ -206,6 +206,23 @@
             $this->assertEquals([$test_client2, $test_client], $result);
         }
 
+        //9. Enter a client and update the client's name.
+        function test_update() {
+            //Arrange
+            $client_name = "Paco";
+            $id = null;
+            $stylist_id = 2;
+            $test_client = new Client($client_name, $id, $stylist_id);
+            $test_client->save();
+            $new_client_name = "Pablo";
+
+            //Act
+            $test_client->update($new_client_name);
+
+            //Assert
+            $this->assertEquals("Pablo", $test_client->getClientName());
+
+        }
 
     }
 ?>
