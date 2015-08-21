@@ -129,5 +129,21 @@
             $this->assertEquals($new_stylist_name, $test_stylist->getStylistName());
         }
 
+        //8. Enter 2 stylists into the database and delete one of them.
+        function testDelete() {
+            //Arrange
+            $stylist_name = "McDonalds";
+            $id = null;
+            $test_stylist = new Stylist($stylist_name, $id);
+            $test_stylist->save();
+            $stylist_name2 = "Joes Burgers";
+            $test_stylist2 = new Stylist($stylist_name2, $id);
+            $test_stylist2->save();
+            //Act
+            $test_stylist->deleteOne();
+            //Assert
+            $this->assertEquals([$test_stylist2], Stylist::getAll());
+        }
+
     }
 ?>
