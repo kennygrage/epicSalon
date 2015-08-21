@@ -123,9 +123,31 @@
 
             //Act
             $result = Client::getAll();
-            
+
             //Assert
             $this->assertEquals([$test_client, $test_client2], $result);
+        }
+
+        //6. Enter a stylist and two clients and test if we can delete all clients.
+        function test_deleteAll() {
+            //Arrange
+            $stylist_name = "Allison";
+            $id = null;
+            $test_stylist = new Stylist($stylist_name, $id);
+            $test_stylist->save();
+            $client_name = "Pablo";
+            $stylist_id = $test_stylist->getId();
+            $test_client = new Client($client_name, $id, $stylist_id);
+            $test_client->save();
+            $client_name2 = "Paco";
+            $stylist_id2 = $test_stylist->getId();
+            $test_client2 = new Client($client_name2, $id, $stylist_id2);
+            $test_client2->save();
+            //Act
+            Client::deleteAll();
+            $result = Client::getAll();
+            //Assert
+            $this->assertEquals([], $result);
         }
 
     }
