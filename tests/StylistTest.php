@@ -19,7 +19,7 @@
         //delete info from our database after every test
         protected function tearDown() {
             Stylist::deleteAll();
-            //Client::deleteAll();
+            Client::deleteAll();
         }
 
         //1. Get the name of the stylist.
@@ -118,13 +118,15 @@
         //7. Enter a stylist into the database and update their info.
         function testUpdate() {
             //Arrange
-            $stylist_name = "Joes Burgers";
+            $stylist_name = "Allison";
             $id = null;
             $test_stylist = new Stylist($stylist_name, $id);
             $test_stylist->save();
-            $new_stylist_name = "McDonalds";
+            $new_stylist_name = "Fey";
+
             //Act
             $test_stylist->update($new_stylist_name);
+
             //Assert
             $this->assertEquals($new_stylist_name, $test_stylist->getStylistName());
         }
@@ -132,17 +134,40 @@
         //8. Enter 2 stylists into the database and delete one of them.
         function testDelete() {
             //Arrange
-            $stylist_name = "McDonalds";
+            $stylist_name = "Allison";
             $id = null;
             $test_stylist = new Stylist($stylist_name, $id);
             $test_stylist->save();
-            $stylist_name2 = "Joes Burgers";
+
+            $stylist_name2 = "Fey";
             $test_stylist2 = new Stylist($stylist_name2, $id);
             $test_stylist2->save();
+
             //Act
             $test_stylist->deleteOne();
+
             //Assert
             $this->assertEquals([$test_stylist2], Stylist::getAll());
+        }
+
+        //9. Enter a stylist and their client into the database and just delete the client.
+        function testDeleteClientTasks() {
+            //Arrange
+            $stylist_name = "Allison";
+            $id = null;
+            $test_stylist = new Stylist($stylist_name, $id);
+            $test_stylist->save();
+
+            $client_name = "Paco";
+            $stylist_id = $test_stylist->getId();
+            $test_client = new Client($client_name, $id, $stylist_id);
+            $test_client->save();
+
+            //Act
+            $test_stylist->deleteOne();
+
+            //Assert
+            $this->assertEquals([], Client::getAll());
         }
 
     }

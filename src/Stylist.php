@@ -59,7 +59,7 @@
         //delete one stylist and all of the stylist's clients
         function deleteOne() {
             $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
-            $GLOBALS['DB']->exec("DELETE FROM clinets WHERE stylist_id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getId()};");
         }
 
         //get all stylists
