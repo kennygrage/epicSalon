@@ -37,5 +37,28 @@
             //Assert
             $this->assertEquals(true, is_numeric($result));
         }
+
+        //2. Enter a stylist and her client and test if we have the client_id under stylist.
+        function test_getStylistId() {
+            //Arrange
+            $stylist_name = "Allison";
+            $id = null;
+            $test_stylist = new Stylist($stylist_name, $id);
+            $test_stylist->save();
+
+            $client_name = "Paco";
+            $stylist_id = $test_stylist->getId();
+            $test_client = new Client($client_name, $id, $stylist_id);
+            $test_client->save();
+
+            //Act
+            $result = $test_client->getStylistId();
+
+            //Assert
+            $this->assertEquals(true, is_numeric($result));
+        }
+
+
+
     }
 ?>
