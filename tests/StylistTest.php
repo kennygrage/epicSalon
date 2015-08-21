@@ -63,6 +63,23 @@
             $this->assertEquals($test_Stylist, $result[0]);
         }
 
+        //4. Save multiple stylists into the database and get all.
+        function test_getAll() {
+            //Arrange
+            $stylist_name = "Allison";
+            $stylist_name2 = "Fey";
+            $test_Stylist = new Stylist($stylist_name);
+            $test_Stylist->save();
+            $test_Stylist2 = new Stylist($stylist_name2);
+            $test_Stylist2->save();
+
+            //Act
+            $result = Stylist::getAll();
+
+            //Assert
+            $this->assertEquals([$test_Stylist, $test_Stylist2], $result);
+        }
+
 
     }
 ?>
