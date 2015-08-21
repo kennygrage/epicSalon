@@ -98,7 +98,22 @@
             $this->assertEquals([], $result);
         }
 
+        //6. Enter 2 stylists in the database and find one given their ID.
+        function test_find() {
+            //Arrange
+            $stylist_name = "Allison";
+            $stylist_name2 = "Fey";
+            $test_Stylist = new Stylist($stylist_name);
+            $test_Stylist->save();
+            $test_Stylist2 = new Stylist($stylist_name2);
+            $test_Stylist2->save();
 
+            //Act
+            $result = Stylist::find($test_Stylist->getId());
+
+            //Assert
+            $this->assertEquals($test_Stylist, $result);
+        }
 
     }
 ?>
