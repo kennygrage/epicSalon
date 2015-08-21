@@ -49,7 +49,19 @@
             $this->assertEquals($id, $result);
         }
 
+        //3. Save stylist into the database and query that info.
+        function test_save() {
+            //Arrange
+            $stylist_name = "Allison";
+            $test_Stylist = new Stylist($stylist_name);
+            $test_Stylist->save();
 
+            //Act
+            $result = Stylist::getAll();
+
+            //Assert
+            $this->assertEquals($test_Stylist, $result[0]);
+        }
 
 
     }
