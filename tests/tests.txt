@@ -1,0 +1,23 @@
+Tests for StylistTest.php:
+    1. Get the name of the stylist.
+    2. Get the auto generated ID from the stylist.
+    3. Save stylist into the database and query that info.
+    4. Save multiple stylists into the database and get all.
+    5. Enter 2 stylists in the database and test if we can delete them.
+    6. Enter 2 stylists in the database and find one given their ID.
+    7. Enter a stylist into the database and update their info.
+    8. Enter 2 stylists into the database and delete one of them.
+    9. Enter a stylist and their client into the database and just delete the client.
+
+
+Tests for ClientTest.php
+    1. Enter a stylist and her client into the database and get the ID of a client.
+    2. Enter a stylist and her client and test if we have the client_id under stylist.
+    3. Enter a stylist and her client and get the client name.
+    4. Enter a stylist and two clients and test if we saved the 2 clients.
+    5. Enter a stylist and two clients and test if we can get all clients.
+    6. Enter a stylist and two clients and test if we can delete all clients.
+    7. Enter a stylist and two clients and find one client from his ID.
+    8. Enter a stylist and two clients and sort the clients.
+    9. Enter a client and update the client's name.
+    10. Enter a stylist and her client delete her client.
